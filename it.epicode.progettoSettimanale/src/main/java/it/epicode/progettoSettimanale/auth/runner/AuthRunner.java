@@ -44,15 +44,20 @@ public class AuthRunner implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("Run...");
+		//SENZA RUOLI SETTATI NEL DB L'APPLICAZIONE NON FUNZIONA
+		
+		// SETTA RUOLI NEL DB
 		//setRoleDefault();
-		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(DeviceConfig.class);
-	//	Device d = (Device) appContext.getBean("createDevice", EDeviceType.PHONE);
-		Device d = (Device) appContext.getBean("createDevice", EDeviceType.LAPTOP);
-		// deviceService.addDevice(d);
-		User u = userRepository.findById(1l).get();
-		d = deviceRepository.findById(2l).get();
-		u.getDeviceList().add(d);
-	//	userRepository.save(u);
+		
+		
+//		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext(DeviceConfig.class);
+//	//	Device d = (Device) appContext.getBean("createDevice", EDeviceType.PHONE);
+//		Device d = (Device) appContext.getBean("createDevice", EDeviceType.LAPTOP);
+//		// deviceService.addDevice(d);
+//		User u = userRepository.findById(1l).get();
+//		d = deviceRepository.findById(2l).get();
+//		u.getDeviceList().add(d);
+//	//	userRepository.save(u);
 	}
 	
 	private void setRoleDefault() {
