@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +26,7 @@ import it.epicode.progettoSettimanale.auth.payload.LoginDto;
 import it.epicode.progettoSettimanale.auth.repository.DeviceRepository;
 import it.epicode.progettoSettimanale.auth.repository.RoleRepository;
 import it.epicode.progettoSettimanale.auth.repository.UserRepository;
+import it.epicode.progettoSettimanale.auth.service.AuthServiceImpl;
 import it.epicode.progettoSettimanale.auth.service.UserService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.websocket.server.PathParam;
@@ -37,6 +40,7 @@ public class UserController {
 	@Autowired UserRepository userRepo;
 	@Autowired DeviceRepository deviceRepo;
 	@Autowired RoleRepository roleRepository;
+	@Autowired AuthServiceImpl authService;
 	
 	
 	
@@ -77,5 +81,19 @@ public class UserController {
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> deleteUserById(@PathVariable Long id){
 		return new ResponseEntity<>(userService.deleteUserById(id), HttpStatus.OK);
+	}
+	
+	@PutMapping
+	@PreAuthorize("hasRole('ADMIN') or hasRole('MODERATOR')")
+	public ResponseEntity<?> editUser(@RequestBody User u){
+		User u2 = userRepo.findById(u.getId()).get();
+		u.setDeviceList(u2.getDeviceList());
+		u.setRoles(u2.getRoles());
+		if(u.getPassword() == null || u.getPassword().length() <= 4) {
+			u.setPassword(u2.getPassword());
+		} else {
+			u.setPassword(authService.encodePsw(u.getPassword()));
+		}
+		return new ResponseEntity<>(userRepo.save(u), HttpStatus.OK);
 	}
 }

@@ -103,4 +103,8 @@ public class AuthServiceImpl implements AuthService {
     	else return ERole.ROLE_USER;
     }
     
+    public String encodePsw(String psw) {
+    	return passwordEncoder.encode(psw);
+    }
+    
 }
