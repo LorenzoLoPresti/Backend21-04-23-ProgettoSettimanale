@@ -1,0 +1,627 @@
+{
+	"info": {
+		"_postman_id": "5797ffb1-17e7-4730-b71e-797c517e978d",
+		"name": "SpringProgettoSettimanaleW6",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25909509"
+	},
+	"item": [
+		{
+			"name": "RegistraDipendente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Pippo\",\r\n    \"username\": \"Goofy\",\r\n    \"email\": \"pippo.goofy.pippo@ex.com\",\r\n    \"password\": \"qwerty\",\r\n    \"roles\":[\"ROLE_ADMIN\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Loign Dipendente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Goofy\",\r\n    \"password\": \"qwerty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Access",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"username\": \"fistalloni\",\r\n    \"password\": \"qwerty\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/test/all",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test Auth",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwaXBwby5nb29meS5waXBwb0BleC5jb20iLCJpYXQiOjE2ODIyNDUyMzcsImV4cCI6MTY4Mjg1MDAzN30.qA3z2qm9DgQdCvBVBSjrcOLjnSgz6VTLokGdOZMkw4AuTh0S4t_zGvi9JxKxYOr_",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"username\": \"fistalloni\",\r\n    \"password\": \"qwerty\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/test/auth",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TestByRole",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwaXBwby5nb29meS5waXBwb0BleC5jb20iLCJpYXQiOjE2ODIyNDUyMzcsImV4cCI6MTY4Mjg1MDAzN30.qA3z2qm9DgQdCvBVBSjrcOLjnSgz6VTLokGdOZMkw4AuTh0S4t_zGvi9JxKxYOr_",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"username\": \"fistalloni\",\r\n    \"password\": \"qwerty\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/test/admin",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"test",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TornaProfiloLoggato",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwaXBwby5nb29meS5waXBwb0BleC5jb20iLCJpYXQiOjE2ODIyNDUyMzcsImV4cCI6MTY4Mjg1MDAzN30.qA3z2qm9DgQdCvBVBSjrcOLjnSgz6VTLokGdOZMkw4AuTh0S4t_zGvi9JxKxYOr_",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Goofy\",\r\n    \"password\": \"qwerty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users/Goofy",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"Goofy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TornaListaUser(admin o moderator)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwaXBwby5nb29meS5waXBwb0BleC5jb20iLCJpYXQiOjE2ODIyNDUyMzcsImV4cCI6MTY4Mjg1MDAzN30.qA3z2qm9DgQdCvBVBSjrcOLjnSgz6VTLokGdOZMkw4AuTh0S4t_zGvi9JxKxYOr_",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"fistalloni\",\r\n    \"password\": \"qwerty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TornaListaDevices(admin o moderator) Copy",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwaXBwby5nb29meS5waXBwb0BleC5jb20iLCJpYXQiOjE2ODIyNDUyMzcsImV4cCI6MTY4Mjg1MDAzN30.qA3z2qm9DgQdCvBVBSjrcOLjnSgz6VTLokGdOZMkw4AuTh0S4t_zGvi9JxKxYOr_",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"fistalloni\",\r\n    \"password\": \"qwerty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users/device/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"device",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TornaListaDevicesPerId(admin)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwaXBwby5nb29meS5waXBwb0BleC5jb20iLCJpYXQiOjE2ODIyNDUyMzcsImV4cCI6MTY4Mjg1MDAzN30.qA3z2qm9DgQdCvBVBSjrcOLjnSgz6VTLokGdOZMkw4AuTh0S4t_zGvi9JxKxYOr_",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"fistalloni\",\r\n    \"password\": \"qwerty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/devices/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"devices",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TornaDevicesPerSerialCode(admin)",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwaXBwby5nb29meS5waXBwb0BleC5jb20iLCJpYXQiOjE2ODIyNDUyMzcsImV4cCI6MTY4Mjg1MDAzN30.qA3z2qm9DgQdCvBVBSjrcOLjnSgz6VTLokGdOZMkw4AuTh0S4t_zGvi9JxKxYOr_",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"fistalloni\",\r\n    \"password\": \"qwerty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/devices/serial/11131",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"devices",
+						"serial",
+						"11131"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crea Device(admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhLmJhZ2xpby5jYWRAZXguY29tIiwiaWF0IjoxNjgyMTUzMTk5LCJleHAiOjE2ODI3NTc5OTl9.ytTNgIlddYdglwmvL_0K_bTau4d1PBEqjDPhsLAJITFL2ieOFGAd8SIejep3c4RO",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"status\": \"AVAILABLE\",\r\n    \"type\": \"PHONE\",\r\n     \"serialCode\": 11347\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/devices",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crea Dipendente(admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwaXBwby5nb29meS5waXBwb0BleC5jb20iLCJpYXQiOjE2ODIyNDUyMzcsImV4cCI6MTY4Mjg1MDAzN30.qA3z2qm9DgQdCvBVBSjrcOLjnSgz6VTLokGdOZMkw4AuTh0S4t_zGvi9JxKxYOr_",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\": \"Paperino\",\r\n    \"username\": \"Donald\",\r\n    \"email\": \"paperino.donald.cad@ex.com\",\r\n    \"password\": \"qwerty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Elimina Device Per Id(admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwaXBwby5nb29meS5waXBwb0BleC5jb20iLCJpYXQiOjE2ODIyNDUyMzcsImV4cCI6MTY4Mjg1MDAzN30.qA3z2qm9DgQdCvBVBSjrcOLjnSgz6VTLokGdOZMkw4AuTh0S4t_zGvi9JxKxYOr_",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"status\": \"AVAILABLE\",\r\n    \"type\": \"PHONE\",\r\n     \"serialCode\": 11131\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/devices/delete/6",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"devices",
+						"delete",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Elimina User Per Id(admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwaXBwby5nb29meS5waXBwb0BleC5jb20iLCJpYXQiOjE2ODIyNDUyMzcsImV4cCI6MTY4Mjg1MDAzN30.qA3z2qm9DgQdCvBVBSjrcOLjnSgz6VTLokGdOZMkw4AuTh0S4t_zGvi9JxKxYOr_",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"status\": \"AVAILABLE\",\r\n    \"type\": \"PHONE\",\r\n     \"serialCode\": 11131\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users/delete/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"delete",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modifica device(moderator o admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwaXBwby5nb29meS5waXBwb0BleC5jb20iLCJpYXQiOjE2ODIyNDUyMzcsImV4cCI6MTY4Mjg1MDAzN30.qA3z2qm9DgQdCvBVBSjrcOLjnSgz6VTLokGdOZMkw4AuTh0S4t_zGvi9JxKxYOr_",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"id\": 2,\r\n   \"status\": \"ON_MANTAINENCE\",\r\n    \"type\": \"LAPTOP\",\r\n    \"serialCode\": 15156\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/devices",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"devices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modifica Utente(moderator o admin)",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJwaXBwby5nb29meS5waXBwb0BleC5jb20iLCJpYXQiOjE2ODIyNDUyMzcsImV4cCI6MTY4Mjg1MDAzN30.qA3z2qm9DgQdCvBVBSjrcOLjnSgz6VTLokGdOZMkw4AuTh0S4t_zGvi9JxKxYOr_",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"id\": 12,\r\n        \"name\": \"Test\",\r\n        \"username\": \"test\",\r\n        \"email\": \"a.test2.cad@ex.com\",\r\n        \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
