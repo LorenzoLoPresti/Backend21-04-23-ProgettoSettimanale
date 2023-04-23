@@ -23,4 +23,8 @@ public class UserService {
 		repo.deleteById(id);
 		return "User deleted";
 	}
+	
+	public User findUserById(Long id) {
+		return repo.findById(id).get();
+	}
 }

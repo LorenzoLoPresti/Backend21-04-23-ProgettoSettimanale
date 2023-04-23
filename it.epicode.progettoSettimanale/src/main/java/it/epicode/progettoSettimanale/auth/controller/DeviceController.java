@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import it.epicode.progettoSettimanale.auth.entity.Device;
 import it.epicode.progettoSettimanale.auth.entity.EDeviceStatus;
+import it.epicode.progettoSettimanale.auth.entity.EDeviceType;
 import it.epicode.progettoSettimanale.auth.repository.DeviceRepository;
 import it.epicode.progettoSettimanale.auth.service.DeviceService;
 import jakarta.persistence.EntityNotFoundException;
@@ -57,7 +58,7 @@ public class DeviceController {
 	@PostMapping
 	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> createDevice(@RequestBody Device device){
-		if(device.getSerialCode() < 10000l && device.getSerialCode() > 20000l) {
+		if(device.getSerialCode() < 10000 || device.getSerialCode() > 20000) {
 			return new ResponseEntity<>("Serial code should be > then 10000 and < then 20000", HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>(deviceRepo.save(device), HttpStatus.CREATED);
@@ -72,16 +73,12 @@ public class DeviceController {
 	@PutMapping
 	@PreAuthorize("hasRole('ADMIN') or hasRole('MODERATOR')")
 	public ResponseEntity<?> putDevice(@RequestBody Device device){
-//		Device d = deviceRepo.findById(device.getId()).get();
-//		Device dEdit = device;
-//		System.out.println(device.getSerialCode() == d.getSerialCode());
-////		System.out.println(d.getSerialCode() + " device by db");
-////		System.out.println(device.getSerialCode() + " device by request");
-//		if(d.getSerialCode() != dEdit.getSerialCode()
-////				|| !d.getType().equals(dEdit.getType())
-//				) {
-//			return new ResponseEntity<>("You can't edit type or serial code", HttpStatus.BAD_REQUEST);
-//		}
+		Device d = deviceRepo.findById(device.getId()).get();
+		if( d.getSerialCode().intValue() != device.getSerialCode().intValue()
+				|| !d.getType().equals(device.getType())
+				) {
+			return new ResponseEntity<>("You can't edit type or serial code", HttpStatus.BAD_REQUEST);
+		}
 		return new ResponseEntity<>(deviceRepo.save(device), HttpStatus.OK);
 	}
 	
